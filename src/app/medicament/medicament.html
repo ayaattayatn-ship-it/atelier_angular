@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Date Création</th>
+                    </tr>
+                </thead>
+                @for (medicament of medicament; track medicament.idMedicament; let index = $index) {
+                    <tbody>
+                        <tr>
+                            <td>{{ index + 1 }}</td>
+                            <td>{{ medicament.idMedicament }}</td>
+                            <td>{{ medicament.nomMedicament }}</td>
+                            <td>{{ medicament.prixMedicament }}</td>
+                            <td>{{ medicament.dateCreation | date:'dd/MM/yyyy' }}</td>
+                            <td><a class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>
+                            <td><a class="btn btn-success" [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Médicament :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Médicament</label>
+            <input readonly type="text" [(ngModel)]="currentMedicament.idMedicament" name="idMedicament" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Médicament</label>
+            <input type="text" [(ngModel)]="currentMedicament.nomMedicament" name="nomMedicament" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Médicament</label>
+            <input type="number" [(ngModel)]="currentMedicament.prixMedicament" name="prixMedicament" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création</label>
+            <input type="date" [ngModel]="currentMedicament.dateCreation | date: 'yyyy-MM-dd'"
+                (ngModelChange)=" currentMedicament.dateCreation= $event" name="dateCreation" class="form-control">
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="updateMedicament()" class="btn btn-success">Modifier</button>
+        </div>
+    </form>
+</div>
