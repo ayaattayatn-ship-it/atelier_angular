@@ -1,6 +1,9 @@
+import { Forme } from "./forme.model";
+
 export class Medicaments {
-idMedicament? : number;
-nomMedicament? : string;
-prixMedicament? : number;
- dateCreation? : Date ;
+idMedicament! : number;
+nomMedicament! : string;
+prixMedicament! : number;
+dateLimite! : Date ;
+Forme! : Forme ;
 }

@@ -4,10 +4,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>N°</th>
                         <th>Id</th>
                         <th>Nom</th>
                         <th>Prix</th>
-                        <th>Date Création</th>
+                        <th>Date Limite</th>
+                        <th>Forme</th>
                     </tr>
                 </thead>
                 @for (medicament of medicament; track medicament.idMedicament; let index = $index) {
@@ -17,7 +19,8 @@
                             <td>{{ medicament.idMedicament }}</td>
                             <td>{{ medicament.nomMedicament }}</td>
                             <td>{{ medicament.prixMedicament }}</td>
-                            <td>{{ medicament.dateCreation | date:'dd/MM/yyyy' }}</td>
+                            <td>{{ medicament.dateLimite | date:'dd/MM/yyyy' }}</td>
+                            <td>{{medicament.Forme.nomForme}}</td>
                             <td><a class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>
                             <td><a class="btn btn-success" [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
                         </tr>

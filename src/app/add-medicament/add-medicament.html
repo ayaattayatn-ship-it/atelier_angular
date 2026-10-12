@@ -16,11 +16,19 @@
             <input type="number" [(ngModel)]="newMedicament.prixMedicament" name="prixMedicament" class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Date création</label>
-                <input type="date" [(ngModel)]="newMedicament.dateCreation" name="dateCreation" class="form-control">
-            </div>
-            <div class="mt-2">
-                <button type="submit" (click)="addMedicament()" class="btn btn-success">Ajouter</button>
-            </div>
+            <label>Date Limite</label>
+            <input type="Date" [(ngModel)]="newMedicament.dateLimite" name="dateLimite" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Forme</label>
+            <select class="form-control" id="idForme" name="idForme" [(ngModel)]="newIdForme">
+                @for(form of forme; track form.idForme){
+                <option [value]="form.idForme"> {{form.nomForme}} </option>
+                }
+            </select>
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addMedicament()" class="btn btn-success">Ajouter</button>
+        </div>
     </form>
 </div>

@@ -22,10 +22,10 @@ export class Medicament implements OnInit {
 
   //constructor() {
   //  this.medicament = [
-  //    { idMedicament: 1, nomMedicament: "Doliprane", prixMedicament: 5.99, dateCreation: new Date("2023-01-01") },
-  //    { idMedicament: 2, nomMedicament: "Paracetamol", prixMedicament: 4.99, dateCreation: new Date("2023-02-01") },
-  //    { idMedicament: 3, nomMedicament: "Ibuprofène", prixMedicament: 6.99, dateCreation: new Date("2023-03-01") },
-  //    { idMedicament: 4, nomMedicament: "Aspirine", prixMedicament: 3.99, dateCreation: new Date("2023-04-01") }
+  //    { idMedicament: 1, nomMedicament: "Doliprane", prixMedicament: 5.99, dateLimite: new Date("2023-01-01") },
+  //    { idMedicament: 2, nomMedicament: "Paracetamol", prixMedicament: 4.99, dateLimite: new Date("2023-02-01") },
+  //    { idMedicament: 3, nomMedicament: "Ibuprofène", prixMedicament: 6.99, dateLimite: new Date("2023-03-01") },
+  //    { idMedicament: 4, nomMedicament: "Aspirine", prixMedicament: 3.99, dateLimite: new Date("2023-04-01") }
   //  ];
   //}
 

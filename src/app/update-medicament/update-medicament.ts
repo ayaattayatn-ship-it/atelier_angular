@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MedicamentService } from '../service/medicament';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Medicaments } from '../model/medicament.model';
+import { Forme } from '../model/forme.model';
 
 @Component({
   imports: [FormsModule,CommonModule],
@@ -14,6 +15,8 @@ import { Medicaments } from '../model/medicament.model';
 export class UpdateMedicament implements OnInit {
 
   currentMedicament = new Medicaments();
+  forme! : Forme[];
+  updateFormId! : number;
 
   constructor(private activeRoute: ActivatedRoute,private router : Router,private medicamentService: MedicamentService) {
 
@@ -21,6 +24,7 @@ export class UpdateMedicament implements OnInit {
 
   updateMedicament() {
     //console.log(this.currentMedicament);
+    this.currentMedicament.Forme = this.medicamentService.consulterForme(this.updateFormId);
     this.medicamentService.updateMedicament(this.currentMedicament);
     this.router.navigate(['medicament']);
   }
@@ -28,7 +32,9 @@ export class UpdateMedicament implements OnInit {
 
   ngOnInit(): void {
     //console.log(this.activeRoute.snapshot.params['id']);
+    this.forme = this.medicamentService.listeForme();
     this.currentMedicament = this.medicamentService.consulterMedicament(this.activeRoute.snapshot.params['id']);
+    this.updateFormId = this.currentMedicament.Forme.idForme;
     console.log(this.currentMedicament);
   }
 

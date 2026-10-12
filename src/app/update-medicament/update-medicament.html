@@ -5,7 +5,8 @@
     <form>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label>ID Médicament</label>
-            <input readonly type="text" [(ngModel)]="currentMedicament.idMedicament" name="idMedicament" class="form-control">
+            <input readonly type="text" [(ngModel)]="currentMedicament.idMedicament" name="idMedicament"
+                class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Nom Médicament</label>
@@ -13,12 +14,22 @@
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label>Prix Médicament</label>
-            <input type="number" [(ngModel)]="currentMedicament.prixMedicament" name="prixMedicament" class="form-control">
+            <input type="number" [(ngModel)]="currentMedicament.prixMedicament" name="prixMedicament"
+                class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Date création</label>
-            <input type="date" [ngModel]="currentMedicament.dateCreation | date: 'yyyy-MM-dd'"
-                (ngModelChange)=" currentMedicament.dateCreation= $event" name="dateCreation" class="form-control">
+            <label>Date Limite</label>
+            <input type="date" [ngModel]="currentMedicament.dateLimite | date: 'yyyy-MM-dd'"
+                (ngModelChange)=" currentMedicament.dateLimite= $event" name="dateLimite" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Forme</label>
+            <select class="form-control" id="idForm" name="idForm" [(ngModel)]="updateFormId">
+                @for(form of forme; track form.idForme)
+                {
+                <option [value]="form.idForme"> {{form.nomForme}} </option>
+                }
+            </select>
         </div>
         <div class="mt-2">
             <button type="submit" (click)="updateMedicament()" class="btn btn-success">Modifier</button>
