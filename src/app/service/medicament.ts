@@ -10,6 +10,7 @@ export class MedicamentService {
     medicaments: Medicaments[];
     medicament!: Medicaments;
     forme: Forme[];
+    medRecherche! : Medicaments[];
 
     constructor() {
         console.log("creation de service Medicament");
@@ -38,7 +39,7 @@ export class MedicamentService {
     this.medicaments.push(med);
   }
 
-    supprimerMedicament(med: Medicaments) {
+  supprimerMedicament(med: Medicaments) {
     //console.log(med);
     //supprimer le medicament med tableau medicaments
     const index = this.medicaments.indexOf(med, 0);
@@ -49,7 +50,7 @@ export class MedicamentService {
     /* this.medicaments.forEach((cur, index) => {
         if(med.idMedicament === cur.idMedicament) {
             this.medicaments.splice(index, 1);
-        }
+        } 
     }); */
   }
 
@@ -74,5 +75,16 @@ export class MedicamentService {
   consulterForme(id: number): Forme {
     return this.forme.find(form  => form.idForme == id)!;
   }
+
+   rechercherParForme(idForm: number): Medicaments[]{
+      this.medRecherche = [];
+      this.medicaments.forEach((cur, index) => {
+       if(idForm == cur.Forme.idForme) {
+           console.log("cur "+cur);
+          this.medRecherche.push(cur);
+           }
+     });
+     return this.medRecherche;
+     }
 
 }
