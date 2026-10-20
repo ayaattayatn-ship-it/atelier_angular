@@ -1,0 +1,41 @@
+<div class="container">
+
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Medicament en tapant</label>
+            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+        </div>
+    </form>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Date Limite</th>
+                        <th>Forme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @for (medicament of medicaments | searchFilter: searchTerm ; track medicament.idMedicament ; let index = $index) {
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ medicament.idMedicament }}</td>
+                        <td>{{ medicament.nomMedicament }}</td>
+                        <td>{{ medicament.prixMedicament }}</td>
+                        <td>{{ medicament.dateLimite | date:'dd/MM/yyyy' }}</td>
+                        <td>{{medicament.Forme.nomForme}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>
+                        <td><a class="btn btn-success"
+                                [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

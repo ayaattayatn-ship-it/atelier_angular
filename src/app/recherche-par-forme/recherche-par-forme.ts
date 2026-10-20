@@ -36,7 +36,8 @@ export class RechercheParForme implements  OnInit {
     this.medicaments =  this.medicamentService.rechercherParForme(this.IdForme);
     console.log(this.medicaments);
     
-    }
+  }
+  
 
   ngOnInit(): void{
     this.medicaments = this.medicamentService.listeMedicaments();
