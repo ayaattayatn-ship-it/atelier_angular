@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { Produit } from '../model/produit.model';
 import { ProduitService } from '../services/produit';
 
@@ -12,25 +12,43 @@ import { ProduitService } from '../services/produit';
 })
 
 export class ProduitsComponent implements OnInit {
-  produits: Produit[]; //un tableau de Produit
+  produits: Produit[] = []; //un tableau de Produit
 
 
-  constructor(  private produitService: ProduitService) {
-    this.produits = this.produitService.listeProduits();
+  constructor(
+    private produitService: ProduitService,
+    private changeDetector: ChangeDetectorRef,
+    private router: Router
+  ) {
+    //this.produits = this.produitService.listeProduits();
   }
 
   ngOnInit(): void {
-
+    this.chargerProduits();
   }
-  supprimerProduit(p: Produit) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf){
-      this.produitService.supprimerProduit(p);
-    }
-    //console.log(p);
-  }
-
+  chargerProduits(){
+    this.produitService.listeProduit().subscribe(prods => {
+    console.log(prods);
+    this.produits = prods;
+    this.changeDetector.markForCheck();
+  });
 }
 
+  supprimerProduit(p: Produit) {
+    //let conf = confirm("Etes-vous sûr ?");
+    //if (conf){
+    //  this.produitService.supprimerProduit(p);
+    //}
+    //console.log(p);*
+    let conf = confirm("Etes-vous sûr ?");
+    if (conf && p.idProduit !== undefined) {
+      this.produitService.supprimerProduit(p.idProduit).subscribe(() => {
+        console.log("produit supprimé");
+        this.chargerProduits();
+        //this.router.navigate(['produits']);
+      });
+    }
+  }
+  
 
-
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Produit } from '../model/produit.model';
 import { ProduitService } from '../services/produit';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [FormsModule],
@@ -13,14 +14,18 @@ export class AddProduit implements OnInit {
 
   message = '';
 
-  constructor(private produitService: ProduitService) {}
+  constructor(private produitService: ProduitService , private router: Router) {}
   ngOnInit(): void {
 
   }
 
   addProduit() {
     //console.log(this.newProduit);
-    this.produitService.ajouterProduit(this.newProduit);
-    this.message = "Produit " + this.newProduit.nomProduit + " ajouté avec succès !";
+    /* this.produitService.ajouterProduit(this.newProduit);
+    this.message = "Produit " + this.newProduit.nomProduit + " ajouté avec succès !"; */
+    this.produitService.ajouterProduit(this.newProduit).subscribe(prod => {
+      console.log(prod);
+      this.router.navigate(['produits']);
+    });
   }
 }
