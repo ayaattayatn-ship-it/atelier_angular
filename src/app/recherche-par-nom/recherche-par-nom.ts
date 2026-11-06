@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SearchFilterPipe } from '../search-filter-pipe';
+import { Auth } from '../service/auth';
 
 @Component({
   imports: [FormsModule, CommonModule,RouterLink,SearchFilterPipe],
@@ -20,16 +21,16 @@ export class RechercheParNom implements OnInit {
   //nomMedicament! : string;
   searchTerm! : string;
   
-  constructor(private medicamentService: MedicamentService){
+  constructor(private medicamentService: MedicamentService, private authService : Auth){
       
     }
   
     supprimerMedicament(med: Medicaments) {
-      //console.log(med);
-      let conf = confirm("Etes-vous sûr ?");
-      if (conf){
-        this.medicamentService.supprimerMedicament(med);
-      }
+    //console.log(med);
+    let conf = confirm("Etes-vous sûr ?");
+    if (conf){
+      this.medicamentService.supprimerMedicament(med);
+    }
   }
 
 

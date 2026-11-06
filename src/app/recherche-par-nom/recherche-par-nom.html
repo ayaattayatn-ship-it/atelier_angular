@@ -29,9 +29,10 @@
                         <td>{{ medicament.prixMedicament }}</td>
                         <td>{{ medicament.dateLimite | date:'dd/MM/yyyy' }}</td>
                         <td>{{medicament.Forme.nomForme}}</td>
-                        <td><a class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>
-                        <td><a class="btn btn-success"
-                                [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
+                        @if(authService.isAdmin()){
+                            <td><a class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>
+                            <td><a class="btn btn-success" [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
+                        }
                     </tr>
                 }
                 </tbody>

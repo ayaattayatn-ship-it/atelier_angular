@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Medicaments } from '../model/medicament.model';
 import { MedicamentService } from '../service/medicament';
 import { RouterLink } from '@angular/router';
+import { Auth } from '../service/auth';
 
 @Component({
   imports: [CommonModule,RouterLink],
@@ -15,7 +16,7 @@ export class Medicament implements OnInit {
 
   medicament : Medicaments[];
 
-  constructor(private medicamentService: MedicamentService) {
+  constructor(private medicamentService: MedicamentService,public authService: Auth) {
     this.medicament = this.medicamentService.listeMedicaments();
   }
 

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Forme } from '../model/forme.model';
 import { FormsModule } from '@angular/forms';
+import { Auth } from '../service/auth';
 
 @Component({
   imports: [CommonModule,RouterLink,FormsModule],
@@ -19,7 +20,7 @@ export class RechercheParForme implements  OnInit {
   forme! : Forme[];
   IdForme! : number;
 
-  constructor(private medicamentService: MedicamentService){
+  constructor(private medicamentService: MedicamentService,private authService:Auth){
     
   }
 
