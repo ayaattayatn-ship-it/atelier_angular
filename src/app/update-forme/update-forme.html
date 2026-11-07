@@ -1,0 +1,14 @@
+<form>
+    <div [hidden]="ajout">
+        <label>ID Forme</label>
+        <input type="number" [(ngModel)]="forme.idForme" name="idForme" class="form-control w-25">
+    </div>
+    <div>
+        <label>Nom Forme</label>
+        <input type="text" [(ngModel)]="forme.nomForme" name="nomForme" class="form-control"
+            placeholder="Entrez un nom de Forme...">
+    </div>
+    <div class="mt-2">
+        <button type="submit" [disabled]="!forme.nomForme" class="btn btn-success" (ngSubmit)="saveForme()">{{ajout ? 'Ajouter' : 'Modifier'}}</button>
+    </div>
+</form>

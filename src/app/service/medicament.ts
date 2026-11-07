@@ -87,4 +87,12 @@ export class MedicamentService {
      return this.medRecherche;
      }
 
+     ajouterForme(forme: Forme) {
+      if (forme.idForme <= 0) {
+        forme.idForme = Math.max(0, ...this.forme.map((currentForme) => currentForme.idForme)) + 1;
+      }
+      this.forme.push(forme);
+    }
+
+
 }

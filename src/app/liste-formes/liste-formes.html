@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <app-update-forme [forme]="updatedForm"
+        (formeUpdated)= "formeUpdated($event)"
+        [ajout]="ajout"></app-update-forme>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom Catégorie</th>
+                    </tr>
+                </thead>
+                @for(form of formes; track form.idForme)
+                {
+                <tbody>
+                    <tr>
+                        <td>{{form.idForme}}</td>
+                        <td>{{form.nomForme!}}</td>
+                        <td><a class="btn btn-success" (click)="updateForm(form)">Editer</a></td>
+                    </tr>
+                </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>
